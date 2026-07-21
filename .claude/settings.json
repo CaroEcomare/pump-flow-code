@@ -13,7 +13,22 @@
       "Bash(python3 -m http.server 8791)",
       "Bash(python3 -)",
       "Bash(gh repo *)",
-      "Bash(mkdir -p /Users/caroaguilar/CODE/pump-flow/docs/superpowers/specs)"
+      "Bash(mkdir -p /Users/caroaguilar/CODE/pump-flow/docs/superpowers/specs)",
+      "Bash(gh api *)",
+      "Bash(curl -s -o /dev/null -w \"index.html: %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/index.html\")",
+      "Bash(curl -s -o /dev/null -w \"styles.css: %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/styles.css\")",
+      "Bash(curl -s \"https://caroecomare.github.io/pump-flow/index.html\")",
+      "Bash(git ls-tree *)",
+      "Bash(curl -s -o /dev/null -w \"logo \\(encoded\\): %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/assets/logo-morado.png\")",
+      "Bash(curl -s -o /dev/null -w \"logo \\(raw utf8 in url\\): %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/pump-flow-design/diseño-marca-pump-flow/assets/logo-morado.png\")",
+      "Bash(curl -s -I \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/styles.css\")",
+      "Bash(curl -s \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/styles.css\")",
+      "Bash(curl -s -o /dev/null -w \"wrong path \\(../../\\): %{http_code}\\\\n\" \"https://caroecomare.github.io/assets/hero-pumpflow.png\")",
+      "Bash(curl -s -o /dev/null -w \"correct path \\(root\\): %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/assets/hero-pumpflow.png\")",
+      "Bash(curl -s -o /dev/null -w \"styles.css?v=2: %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/styles.css?v=2\")",
+      "Bash(curl -s -o /dev/null -w \"hero photo: %{http_code}\\\\n\" \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/assets/hero-pumpflow.png\")",
+      "Bash(curl -s \"https://caroecomare.github.io/pump-flow/pump-flow-design/dise%C3%B1o-marca-pump-flow/styles.css?v=2\")",
+      "Bash(python3 -c ' *)"
     ],
     "additionalDirectories": [
       "/Users/caroaguilar/CODE/pump-flow/docs/superpowers"

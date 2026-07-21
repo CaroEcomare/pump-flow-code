@@ -634,12 +634,19 @@ function generar() {
     k++;
   }
 
-  // 5. recorrer las posiciones en orden fijo, encadenando configuraciones:
-  //    primero se agota la config activa; abrir una nueva gasta presupuesto de cambios
+  // 5. recorrer las posiciones con una secuencia general (de pie hacia acostada)
+  //    pero sin orden fijo: cada posición se mueve un poco al azar respecto a su
+  //    lugar habitual, así posiciones vecinas a veces se cruzan y la clase no
+  //    repite siempre la misma estructura, sin perder el sentido de avance.
+  const HOLGURA_ORDEN = 1;
+  const ordenPos = {};
+  POSICIONES.forEach((p, i) => ordenPos[p.key] = i + (Math.random() * 2 - 1) * HOLGURA_ORDEN);
+  const posActivasOrdenadas = [...posActivas].sort((a, z) => ordenPos[a.key] - ordenPos[z.key]);
+
   const score = e => variacionesDe(e).length + (cupoGrupo[e.grupo] > 0 ? 6 : 0) - penalizacion(e.nombre) + Math.random() * 2;
   const bloques = [];
   let configPrev = null, cambios = 0;
-  posActivas.forEach(p => {
+  posActivasOrdenadas.forEach(p => {
     let cupo = cupoPos[p.key];
     const disponibles = [...porPos[p.key]];
     const sel = [];
@@ -693,7 +700,7 @@ function generar() {
       const p = POSICIONES.find(p => p.key === e.pos);
       bloque = { key: e.pos, titulo: p.titulo, items: [] };
       bloques.push(bloque);
-      bloques.sort((a, z) => POSICIONES.findIndex(p => p.key === a.key) - POSICIONES.findIndex(p => p.key === z.key));
+      bloques.sort((a, z) => ordenPos[a.key] - ordenPos[z.key]);
     }
     // probar todos los puntos de inserción dentro de su bloque y quedarse
     // con el que deje la menor cantidad total de cambios de resortes
